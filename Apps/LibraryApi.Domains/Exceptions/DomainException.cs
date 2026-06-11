@@ -1,4 +1,4 @@
-namespace RestAPI_Exercise.Application.Exceptions;
+namespace LibraryApi.Domains.Exceptions;
 /// <summary>
 /// 業務ルール違反を表す例外クラス
 /// </summary>

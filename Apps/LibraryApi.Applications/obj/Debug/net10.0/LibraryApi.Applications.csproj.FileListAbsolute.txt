@@ -8,6 +8,7 @@
 /home/fullness/CS_Training/LibraryApi/Apps/LibraryApi.Applications/obj/Debug/net10.0/LibraryApi.Applications.AssemblyInfoInputs.cache
 /home/fullness/CS_Training/LibraryApi/Apps/LibraryApi.Applications/obj/Debug/net10.0/LibraryApi.Applications.AssemblyInfo.cs
 /home/fullness/CS_Training/LibraryApi/Apps/LibraryApi.Applications/obj/Debug/net10.0/LibraryApi.Applications.csproj.CoreCompileInputs.cache
+/home/fullness/CS_Training/LibraryApi/Apps/LibraryApi.Applications/obj/Debug/net10.0/LibraryApi.Applications.sourcelink.json
 /home/fullness/CS_Training/LibraryApi/Apps/LibraryApi.Applications/obj/Debug/net10.0/LibraryA.EEEF5E3E.Up2Date
 /home/fullness/CS_Training/LibraryApi/Apps/LibraryApi.Applications/obj/Debug/net10.0/LibraryApi.Applications.dll
 /home/fullness/CS_Training/LibraryApi/Apps/LibraryApi.Applications/obj/Debug/net10.0/refint/LibraryApi.Applications.dll

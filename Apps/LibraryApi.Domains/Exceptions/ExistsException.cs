@@ -1,4 +1,4 @@
-namespace RestAPI_Exercise.Application.Exceptions;
+namespace LibraryApi.Domains.Exceptions;
 /// <summary>
 /// データが既に存在するエラーを表す例外クラス
 /// </summary>

@@ -1,4 +1,4 @@
-namespace RestAPI_Exercise.Application.Usecases;
+namespace LibraryApi.Applications.Usecases;
 /// <summary>
 /// Unit of Workパターンを利用したトランザクション制御インターフェイス
 /// </summary>

@@ -1,4 +1,4 @@
-namespace RestAPI_Exercise.Application.Exceptions;
+namespace LibraryApi.Domains.Exceptions;
 /// <summary>
 /// 内部エラーを表す例外クラス
 /// HTTPstatuscode:500 Internal Server Errorを表す

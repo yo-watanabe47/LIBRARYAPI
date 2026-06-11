@@ -72,7 +72,7 @@
                 // 多くの図書(Book)が、1つの分類(Category)に属する
                 // 外部キーは book.category_id。逆参照は持たないため、相手側のナビゲーションは指定しない
                 entity.HasOne(e => e.Category)
-                    .WithMany()
+                    .WithMany(c => c.Books)
                     .HasForeignKey(e => e.CategoryId)
                     .OnDelete(DeleteBehavior.Restrict); // 分類削除時に図書を巻き込まない
             });
@@ -86,7 +86,7 @@
                 entity.HasIndex(e => e.StockUuid).IsUnique();
 
                 // 図書への外部キー(book_id)は一意 → これにより book と book_stock が1対1になる
-                entity.HasIndex(e => e.BookId).IsUnique();
+                entity.HasIndex(e => e.Id).IsUnique();
 
                 // 蔵書数は0以上(チェック制約)
                 entity.ToTable(t =>
@@ -99,7 +99,7 @@
             modelBuilder.Entity<BookEntity>()
                 .HasOne(e => e.BookStock)
                 .WithOne()
-                .HasForeignKey<BookStockEntity>(e => e.BookId)
+                .HasForeignKey<BookStockEntity>(e => e.Id)
                 .OnDelete(DeleteBehavior.Cascade); // 図書削除時に蔵書も削除する(UC-06 BR-02)
 
             // ───────────────────────────────────────────
