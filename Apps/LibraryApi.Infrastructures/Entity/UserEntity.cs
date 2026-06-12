@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace LibraryApi.Infrastructure.Entities;
+namespace LibraryApi.Infrastructures.Entities;
 /// <summary>
 /// users テーブルに対応する EF Core エンティティ(永続化モデル)
 ///

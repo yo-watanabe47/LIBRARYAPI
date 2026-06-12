@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace LibraryApi.Infrastructure.Entities;
+namespace LibraryApi.Infrastructures.Entities;
 /// <summary>
 /// productテーブルに対応するEntity Framework Coreのエンティティ
 /// </summary>

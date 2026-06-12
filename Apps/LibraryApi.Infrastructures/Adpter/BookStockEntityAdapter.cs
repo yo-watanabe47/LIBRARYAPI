@@ -1,8 +1,8 @@
 using LibraryApi.Domains.Adapters;
 using LibraryApi.Domains.Models;
 using LibraryApi.Applications.Exceptions;
-using LibraryApi.Infrastructure.Entities;
-namespace LibraryApi.Infrastructure.Adapters;
+using LibraryApi.Infrastructures.Entities;
+namespace LibraryApi.Infrastructures.Adapters;
 /// <summary>
 /// ドメインオブジェクト:ProductStockとProductStockEntityの相互変換クラス
 /// </summary> 

@@ -1,7 +1,7 @@
 using LibraryApi.Domains.Models;
-using LibraryApi.Infrastructure.Entities;
+using LibraryApi.Infrastructures.Entities;
 
-namespace LibraryApi.Infrastructure.Adapters;
+namespace LibraryApi.Infrastructures.Adapters;
 /// <summary>
 /// 商品、商品カテゴリ、商品在庫オブジェクトの相互変換Factoryクラス
 /// ドメインオブジェクト:ProductとProductEntityの相互変換

@@ -23,8 +23,5 @@ public class RegisterBookViewModel
     "^[0-9a-fA-F]{8}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{4}\\-[0-9a-fA-F]{12}$",
     ErrorMessage = "商品カテゴリIdはUUID形式で指定してください。")]
     public string CategoryId { get; set; } = string.Empty;
-    // // 商品カテゴリ名
-    // [Required(ErrorMessage = "商品カテゴリ名は必須です。")]
-    // [StringLength(20, ErrorMessage = "商品カテゴリ名は{1}文字以内で入力してください。")]
-    // public string CategoryName { get; set; } = string.Empty;
+
 }

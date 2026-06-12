@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-namespace LibraryApi.Infrastructure.Entities;
+namespace LibraryApi.Infrastructures.Entities;
 /// <summary>
 /// product_stockテーブルに対応するEntity Framework Coreのエンティティ
 /// </summary>
@@ -23,7 +23,7 @@ public class BookStockEntity
     public int Stock { get; set; }
 
     [Column("book_id")]// マッピングする列名
-    public int ProductId { get; set; }
+    public int BookId { get; set; }
 
         [Column("created_at")]
     [Required] // NOT NULL
@@ -33,6 +33,6 @@ public class BookStockEntity
     public DateTime UpdatedAt { get; set; }
 
     // 逆向きのナビゲーション
-    [ForeignKey("ProductId")]
-    public BookEntity? Product { get; set; }
+    [ForeignKey("BookId")]
+    public BookEntity? Book { get; set; }
 }

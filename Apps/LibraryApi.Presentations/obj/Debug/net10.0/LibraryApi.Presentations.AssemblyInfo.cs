@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LibraryApi.Presentations")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7742735625b24d9b7c025a16df110eea47d3bfd2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+794b88370d0b498536043cf94f62c67000e3a262")]
 [assembly: System.Reflection.AssemblyProductAttribute("LibraryApi.Presentations")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LibraryApi.Presentations")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

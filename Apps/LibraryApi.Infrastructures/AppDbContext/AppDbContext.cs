@@ -1,6 +1,6 @@
-    using LibraryApi.Infrastructure.Entities;
+    using LibraryApi.Infrastructures.Entities;
     using Microsoft.EntityFrameworkCore;
-    namespace LibraryApi.Infrastructure.Contexts;
+    namespace LibraryApi.Infrastructures.Contexts;
     /// <summary>
     /// 図書管理システムの EF Core データベースコンテキスト
     ///

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using LibraryApi.Domains.Models;
-namespace LibraryApi.Infrastructure.Entities;
+namespace LibraryApi.Infrastructures.Entities;
 /// <summary>
 /// product_categoryテーブルに対応するEntity Framework Coreのエンティティ
 /// </summary>

@@ -20,7 +20,7 @@ public class Category
     {
         ValidateUuid(categoryUuid); // UUIDの形式検証
         CategoryUuid = categoryUuid;
-        ValidateName(name);         // カテゴリ名のルール検証
+        // ValidateName(name);         // カテゴリ名のルール検証
         Name = name;
     }
 
@@ -31,18 +31,18 @@ public class Category
     public Category(string name)
         : this(Guid.NewGuid().ToString(), name){}
 
-    // 商品カテゴリ名の最大長
-    private const int MaxLength = 20;
-    /// <summary>
-    /// カテゴリ名のルール検証
-    /// </summary>
-    private void ValidateName(string name)
-    {
-        if (string.IsNullOrWhiteSpace(name))
-            throw new DomainException("カテゴリ名は必須です。");
-        if (name.Length > MaxLength)
-            throw new DomainException($"カテゴリ名は{MaxLength}文字以内である必要があります。");
-    }
+    // // 商品カテゴリ名の最大長
+    // private const int MaxLength = 20;
+    // /// <summary>
+    // /// カテゴリ名のルール検証
+    // /// </summary>
+    // private void ValidateName(string name)
+    // {
+    //     if (string.IsNullOrWhiteSpace(name))
+    //         throw new DomainException("カテゴリ名は必須です。");
+    //     if (name.Length > MaxLength)
+    //         throw new DomainException($"カテゴリ名は{MaxLength}文字以内である必要があります。");
+    // }
 
     /// <summary>
     /// UUIDの形式検証(Guidとして妥当か)
@@ -54,14 +54,14 @@ public class Category
             throw new DomainException("UUIDの形式が正しくありません。");
     }
 
-    /// <summary>
-    /// カテゴリ名の変更
-    /// </summary>
-    public void ChangeName(string name)
-    {
-        ValidateName(name);
-        Name = name;
-    }
+    // /// <summary>
+    // /// カテゴリ名の変更
+    // /// </summary>
+    // public void ChangeName(string name)
+    // {
+    //     ValidateName(name);
+    //     Name = name;
+    // }
 
     /// <summary>
     /// 識別子の等価性判定

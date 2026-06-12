@@ -10,30 +10,30 @@ public interface IUserRepository
     // /// </summary>
     // /// <param name="user">永続化するユーザー</param>
     // /// <returns>なし</returns>
-    // Task CreateAsync(User user);
+    Task CreateAsync(User user);
 
     // /// <summary>
-    // /// ユーザー名またはメールアドレスが既に存在するか確認する
+    // /// ユーザー名が既に存在するか確認する
     // /// </summary>
     // /// <param name="username">ユーザー名</param>
     // /// <returns>true:存在する false:存在しない</returns>
-    // Task<bool> ExistsByUsernameOrEmailAsync(string username);
+    Task<bool> ExistsByUsernameAsync(string username);
 
 
 
-    // /// <summary>
-    // /// ユーザーId(UUID)からユーザーを取得する
-    // /// </summary>
-    // /// <param name="useruuid">ユーザーId(UUID)</param>
-    // /// <returns>存在する場合:ドメインオブジェクト:User 存在しない場合:null</returns>
-    // Task<User?> SelectByIdAsync(string useruuid);
+    /// <summary>
+    /// ユーザーId(UUID)からユーザーを取得する
+    /// </summary>
+    /// <param name="useruuid">ユーザーId(UUID)</param>
+    /// <returns>存在する場合:ドメインオブジェクト:User 存在しない場合:null</returns>
+    Task<User?> SelectByIdAsync(string useruuid);
 
     // /// <summary>
     // /// ユーザー名またはパスワードからユーザーを取得する
     // /// </summary>
     // /// <param name="usernameOrEmail">ユーザー名またはメールアドレス</param>
     // /// <returns>存在する場合:ドメインオブジェクト:User 存在しない場合:null</returns>
-    // Task<User?> SelectByUsernameOrEmailAsync(string usernameOrEmail);
+    Task<User?> SelectByUsernameAsync(string usernameOrEmail);
 
     // /// <summary>
     // /// 引数に指定されたユーザーIdでユーザーを削除する

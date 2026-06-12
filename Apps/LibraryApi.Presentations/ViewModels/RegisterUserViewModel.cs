@@ -13,13 +13,6 @@ public class RegisterUserViewModel
         , ErrorMessage = "ユーザー名は{2}文字以上、{1}文字以内で入力してください。")]
     public string Username { get; init; } = string.Empty;
 
-    /// <summary>
-    /// メールアドレス（最大100文字）
-    /// </summary>
-    [Required(ErrorMessage = "メールアドレスは必須です。")]
-    [EmailAddress(ErrorMessage = "メールアドレスの形式が不正です。")]
-    [StringLength(100, ErrorMessage = "メールアドレスは100文字以内で入力してください。")]
-    public string Email { get; init; } = string.Empty;
 
     /// <summary>
     /// 平文パスワード（8〜12文字）
@@ -31,6 +24,6 @@ public class RegisterUserViewModel
 
     public override string ToString()
     {
-        return $"Username={Username}, Email={Email}, Password={Password}";
+        return $"Username={Username}, Password={Password}";
     }
 }

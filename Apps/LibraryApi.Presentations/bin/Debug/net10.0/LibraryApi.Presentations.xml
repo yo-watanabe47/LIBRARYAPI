@@ -6,14 +6,14 @@
     <members>
         <member name="T:LibraryApi.Presentations.Adapters.RegisterBookViewModelAdapter">
             <summary>
-            RegisterProductViewModelからドメインオブジェクト:Productへ変換するアダプタ
+            RegisterBookViewModelからドメインオブジェクト:Bookへ変換するアダプタ
             </summary>
         </member>
         <member name="M:LibraryApi.Presentations.Adapters.RegisterBookViewModelAdapter.RestoreAsync(LibraryApi.Presentations.ViewModels.RegisterBookViewModel)">
             <summary>
-            RegisterProductViewModelからドメインオブジェクト:Productを復元する
+            RegisterBookViewModelからドメインオブジェクト:Bookを復元する
             </summary>
-            <param name="target">ユースケース:[新商品を登録する]を実現するViewModel</param>
+            <param name="target">ユースケース:[新書籍を登録する]を実現するViewModel</param>
             <returns></returns>
         </member>
         <member name="T:LibraryApi.Presentations.Adapters.RegisterUserViewModelAdapter">
@@ -30,14 +30,14 @@
         </member>
         <member name="T:LibraryApi.Presentations.Adapters.UpdateBookViewModelAdapter">
             <summary>
-            UpdateProductViewModelからドメインオブジェクト:Productへ変換するアダプタ
+            UpdateBookViewModelからドメインオブジェクト:Bookへ変換するアダプタ
             </summary>
         </member>
         <member name="M:LibraryApi.Presentations.Adapters.UpdateBookViewModelAdapter.RestoreAsync(LibraryApi.Presentations.ViewModels.UpdateBookViewModel)">
             <summary>
-            UpdateProductViewModelからドメインオブジェクト:Productを復元する
+            UpdateBookViewModelからドメインオブジェクト:Bookを復元する
             </summary>
-            <param name="target">ユースケース:[商品を変更する]を実現するViewModel</param>
+            <param name="target">ユースケース:[書籍を変更する]を実現するViewModel</param>
             <returns></returns>
         </member>
         <member name="T:LibraryApi.Presentations.Configs.ApplicationDependencyExtensions">
@@ -119,6 +119,31 @@
             </param>
             <returns>IServiceCollection(チェーン可能)</returns>
         </member>
+        <member name="T:LibraryApi.Presentations.Controllers.DeleteBookController">
+            <summary>
+            ユースケース:[書籍を変更する]を実現するコントローラ
+            </summary>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.DeleteBookController.#ctor(LibraryApi.Applications.Usecases.Books.Interfaces.IDeleteBookUsecase)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="usecase">ユースケース:[商品を変更する]を実現するインターフェイス</param>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.DeleteBookController.GetBookById(System.String)">
+            <summary>
+            選択された書籍Idで書籍を取得する
+            </summary>
+            <param name="bookId">書籍Id(UUID)</param>
+            <returns>該当する書籍が存在すればOK(200)、存在しなければNotFound(404)</returns>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.DeleteBookController.Delete(System.String)">
+            <summary>
+            書籍を削除する
+            </summary>
+            <param name="bookId">書籍削除用ViewModel</param>
+            <returns></returns>
+        </member>
         <member name="T:LibraryApi.Presentations.Controllers.DetailBookController">
             <summary>
             ユースケース:[商品をキーワード検索する]を実現するコントローラ
@@ -137,6 +162,66 @@
             <param name="keyword">検索キーワード</param>
             <returns>検索結果の商品一覧</returns>
         </member>
+        <member name="T:LibraryApi.Presentations.Controllers.RegisterBookController">
+            <summary>
+            ユースケース:[新書籍を登録する]を実現するコントローラ
+            </summary>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.RegisterBookController.#ctor(LibraryApi.Applications.Usecases.Books.Interfaces.IRegisterBookUsecase,LibraryApi.Presentations.Adapters.RegisterBookViewModelAdapter)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="usecase">ユースケース:[新書籍を登録する]を実現するインターフェイス</param>
+            <param name="adapter">RegisterBookViewModelからドメインオブジェクト:Bookへ変換するアダプタ</param>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.RegisterBookController.GetCategories">
+            <summary>
+            商品カテゴリ一覧の取得
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.RegisterBookController.GetCategoryById(System.String)">
+            <summary>
+            選択された商品カテゴリIdで商品カテゴリを取得する
+            </summary>
+            <param name="categoryId">商品カテゴリId(UUID)</param>
+            <returns>該当するカテゴリが存在すればOK(200)、存在しなければNotFound(404)</returns>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.RegisterBookController.ValidateProduct(System.String)">
+            <summary>
+            商品が既に存在するかを検証する
+            </summary>
+            <param name="productName">検証対象の商品名</param>
+            <returns>
+            存在しない場合:Ok(200)、存在する場合:Conflict(409) 
+            </returns>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.RegisterBookController.Register(LibraryApi.Presentations.ViewModels.RegisterBookViewModel)">
+            <summary>
+            新商品を登録する
+            </summary>
+            <param name="model">商品登録用ViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="T:LibraryApi.Presentations.Controllers.RegisterUserController">
+            <summary>
+            ユースケース:[ユーザーを登録する]を実現するコントローラ
+            </summary>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.RegisterUserController.#ctor(LibraryApi.Applications.Usecases.Users.Interfaces.IRegisterUserUsecase,LibraryApi.Presentations.Adapters.RegisterUserViewModelAdapter)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="usecase">ユースケース:[ユーザーを登録する]を実現するインターフェイス</param>
+            <param name="adapter">RegisterProductViewModelからドメインオブジェクト:Productへ変換するアダプタ</param>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.RegisterUserController.Register(LibraryApi.Presentations.ViewModels.RegisterUserViewModel)">
+            <summary>
+            ユーザーの登録
+            </summary>
+            <param name="viewModel">ユースケース:[ユーザーを登録する]を実現するViewModel</param>
+            <returns></returns>
+        </member>
         <member name="T:LibraryApi.Presentations.Controllers.SearchBookByKeywordController">
             <summary>
             ユースケース:[商品をキーワード検索する]を実現するコントローラ
@@ -154,6 +239,41 @@
             </summary>
             <param name="keyword">検索キーワード</param>
             <returns>検索結果の商品一覧</returns>
+        </member>
+        <member name="T:LibraryApi.Presentations.Controllers.UpdateBookController">
+            <summary>
+            ユースケース:[書籍を変更する]を実現するコントローラ
+            </summary>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.UpdateBookController.#ctor(LibraryApi.Applications.Usecases.Books.Interfaces.IUpdateBookUsecase,LibraryApi.Presentations.Adapters.UpdateBookViewModelAdapter)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="usecase">ユースケース:[商品を変更する]を実現するインターフェイス</param>
+            <param name="adapter">UpdateBookViewModelからドメインオブジェクト:Bookへ変換するアダプタ</param>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.UpdateBookController.GetBookById(System.String)">
+            <summary>
+            選択された書籍Idで書籍を取得する
+            </summary>
+            <param name="bookId">書籍Id(UUID)</param>
+            <returns>該当する書籍が存在すればOK(200)、存在しなければNotFound(404)</returns>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.UpdateBookController.ValidateProduct(System.String)">
+            <summary>
+            書籍が既に存在するかを検証する
+            </summary>
+            <param name="Title">検証対象の書籍名</param>
+            <returns>
+            存在しない場合:Ok(200)、存在する場合:Conflict(409) 
+            </returns>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.UpdateBookController.Updated(LibraryApi.Presentations.ViewModels.UpdateBookViewModel)">
+            <summary>
+            書籍を変更する
+            </summary>
+            <param name="model">書籍変更用ViewModel</param>
+            <returns></returns>
         </member>
         <member name="T:LibraryApi.Presentations.Middlewares.ExceptionHandlingMiddleware">
             <summary>
@@ -189,11 +309,6 @@
         <member name="P:LibraryApi.Presentations.ViewModels.RegisterUserViewModel.Username">
             <summary>
             ユーザー名（3〜30文字）
-            </summary>
-        </member>
-        <member name="P:LibraryApi.Presentations.ViewModels.RegisterUserViewModel.Email">
-            <summary>
-            メールアドレス（最大100文字）
             </summary>
         </member>
         <member name="P:LibraryApi.Presentations.ViewModels.RegisterUserViewModel.Password">

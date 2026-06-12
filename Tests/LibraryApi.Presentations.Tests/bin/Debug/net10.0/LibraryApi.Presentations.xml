@@ -1,0 +1,333 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LibraryApi.Presentations</name>
+    </assembly>
+    <members>
+        <member name="T:LibraryApi.Presentations.Adapters.RegisterBookViewModelAdapter">
+            <summary>
+            RegisterBookViewModelからドメインオブジェクト:Bookへ変換するアダプタ
+            </summary>
+        </member>
+        <member name="M:LibraryApi.Presentations.Adapters.RegisterBookViewModelAdapter.RestoreAsync(LibraryApi.Presentations.ViewModels.RegisterBookViewModel)">
+            <summary>
+            RegisterBookViewModelからドメインオブジェクト:Bookを復元する
+            </summary>
+            <param name="target">ユースケース:[新書籍を登録する]を実現するViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="T:LibraryApi.Presentations.Adapters.RegisterUserViewModelAdapter">
+            <summary>
+            RegisterUserViewModelからドメインオブジェクト:Userへ変換するアダプタ
+            </summary> 
+        </member>
+        <member name="M:LibraryApi.Presentations.Adapters.RegisterUserViewModelAdapter.RestoreAsync(LibraryApi.Presentations.ViewModels.RegisterUserViewModel)">
+            <summary>
+            RegisterUserViewModelからドメインオブジェクト:Userを復元する
+            </summary>
+            <param name="target">ユースケース:[ユーザーを登録する]を実現するViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="T:LibraryApi.Presentations.Adapters.UpdateBookViewModelAdapter">
+            <summary>
+            UpdateProductViewModelからドメインオブジェクト:Productへ変換するアダプタ
+            </summary>
+        </member>
+        <member name="M:LibraryApi.Presentations.Adapters.UpdateBookViewModelAdapter.RestoreAsync(LibraryApi.Presentations.ViewModels.UpdateBookViewModel)">
+            <summary>
+            UpdateProductViewModelからドメインオブジェクト:Productを復元する
+            </summary>
+            <param name="target">ユースケース:[商品を変更する]を実現するViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="T:LibraryApi.Presentations.Configs.ApplicationDependencyExtensions">
+            <summary>
+            依存関係(DI)の設定
+            インフラストラクチャ層、アプリケーション層、プレゼンテーション層
+            をまとめて追加する拡張クラス
+            </summary>
+        </member>
+        <member name="M:LibraryApi.Presentations.Configs.ApplicationDependencyExtensions.AddApplicationDependencies(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            アプリ全体の依存関係を一括追加する拡張メソッド
+            </summary>
+            <param name="services">サービスコレクション</param>
+            <param name="config">構成情報</param>
+            <returns>IServiceCollection(チェーン可能)</returns>
+        </member>
+        <member name="M:LibraryApi.Presentations.Configs.ApplicationDependencyExtensions.AddInfrastructureDependencies(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            インフラストラクチャ層の依存関係を追加
+            </summary>
+            <param name="services">依存関係注入(DI)のサービスコレクション</param>
+            <param name="config">アプリケーションの設定情報を管理</param>
+            <returns></returns>
+        </member>
+        <member name="M:LibraryApi.Presentations.Configs.ApplicationDependencyExtensions.AddApplicationLayerDependencies(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            アプリケーション層の依存関係を追加
+            </summary>
+            <param name="services">依存関係注入(DI)のサービスコレクション</param>
+            <param name="config"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LibraryApi.Presentations.Configs.ApplicationDependencyExtensions.AddPresentationLayerDependencies(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            プレゼンテーション層の依存関係を追加
+            </summary>
+            <param name="services">依存関係注入(DI)のサービスコレクション</param>
+            <param name="config"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LibraryApi.Presentations.Configs.ApplicationDependencyExtensions.BuildAppProvider(Microsoft.Extensions.Configuration.IConfiguration,System.Action{Microsoft.Extensions.DependencyInjection.IServiceCollection},System.Action{Microsoft.Extensions.Logging.ILoggingBuilder})">
+            <summary>
+            テストプロジェクトにServiceProviderを提供するヘルパメソッド
+            生成されたServiceProviderは、テストクラスで使用されるDIコンテナとして機能する
+            </summary>
+            <param name="config"></param>
+            <param name="configureServices"></param>
+            <param name="configureLogging"></param>
+            <returns></returns>
+        </member>
+        <member name="T:LibraryApi.Presentations.Configs.ExceptionHandlingExtensions">
+            <summary>
+            ExceptionHandlingMiddlewareを登録する拡張メソッドクラス
+            </summary>
+        </member>
+        <member name="M:LibraryApi.Presentations.Configs.ExceptionHandlingExtensions.UseExceptionHandling(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            ExceptionHandlingMiddlewareをアプリケーションパイプラインに登録する拡張メソッド
+            </summary>
+            <param name="app">IApplicationBuilderのインスタンス</param>
+            <returns>登録後のIApplicationBuilder</returns>
+        </member>
+        <member name="T:LibraryApi.Presentations.Configs.SwaggerExtensions">
+            <summary>
+            Swagger(Open API)のサービス登録を行う拡張クラス
+            - アノテーション有効化
+            - XML コメントの取り込み
+            - JWT(Bearer)のセキュリティ定義と要件の追加
+            </summary>
+        </member>
+        <member name="M:LibraryApi.Presentations.Configs.SwaggerExtensions.AddSwaggerWithJwt(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Reflection.Assembly)">
+            <summary>
+            Swaggerを有効化し、JWT認証をSwaggerUIから利用できるように設定する
+            </summary>
+            <param name="services">サービスコレクション</param>
+            <param name="xmlDocAssembly">
+            XMLドキュメントコメントを取り込む対象のアセンブリ
+            </param>
+            <returns>IServiceCollection(チェーン可能)</returns>
+        </member>
+        <member name="T:LibraryApi.Presentations.Controllers.DetailBookController">
+            <summary>
+            ユースケース:[商品をキーワード検索する]を実現するコントローラ
+            </summary>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.DetailBookController.#ctor(LibraryApi.Applications.Usecases.Books.Interfaces.IDetailBookUsecase)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="usecase">ユースケース:[商品をキーワード検索する]を実現するインターフェイス</param>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.DetailBookController.Search(System.String)">
+            <summary>
+            キーワードで商品を検索する
+            </summary>
+            <param name="keyword">検索キーワード</param>
+            <returns>検索結果の商品一覧</returns>
+        </member>
+        <member name="T:LibraryApi.Presentations.Controllers.RegisterBookController">
+            <summary>
+            ユースケース:[新書籍を登録する]を実現するコントローラ
+            </summary>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.RegisterBookController.#ctor(LibraryApi.Applications.Usecases.Books.Interfaces.IRegisterBookUsecase,LibraryApi.Presentations.Adapters.RegisterBookViewModelAdapter)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="usecase">ユースケース:[新書籍を登録する]を実現するインターフェイス</param>
+            <param name="adapter">RegisterBookViewModelからドメインオブジェクト:Bookへ変換するアダプタ</param>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.RegisterBookController.GetCategories">
+            <summary>
+            商品カテゴリ一覧の取得
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.RegisterBookController.GetCategoryById(System.String)">
+            <summary>
+            選択された商品カテゴリIdで商品カテゴリを取得する
+            </summary>
+            <param name="categoryId">商品カテゴリId(UUID)</param>
+            <returns>該当するカテゴリが存在すればOK(200)、存在しなければNotFound(404)</returns>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.RegisterBookController.ValidateProduct(System.String)">
+            <summary>
+            商品が既に存在するかを検証する
+            </summary>
+            <param name="productName">検証対象の商品名</param>
+            <returns>
+            存在しない場合:Ok(200)、存在する場合:Conflict(409) 
+            </returns>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.RegisterBookController.Register(LibraryApi.Presentations.ViewModels.RegisterBookViewModel)">
+            <summary>
+            新商品を登録する
+            </summary>
+            <param name="model">商品登録用ViewModel</param>
+            <returns></returns>
+        </member>
+        <member name="T:LibraryApi.Presentations.Controllers.SearchBookByKeywordController">
+            <summary>
+            ユースケース:[商品をキーワード検索する]を実現するコントローラ
+            </summary>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.SearchBookByKeywordController.#ctor(LibraryApi.Applications.Usecases.Books.Interfaces.ISearchBookByKeywordUsecase)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="usecase">ユースケース:[商品をキーワード検索する]を実現するインターフェイス</param>
+        </member>
+        <member name="M:LibraryApi.Presentations.Controllers.SearchBookByKeywordController.Search(System.String)">
+            <summary>
+            キーワードで商品を検索する
+            </summary>
+            <param name="keyword">検索キーワード</param>
+            <returns>検索結果の商品一覧</returns>
+        </member>
+        <member name="T:LibraryApi.Presentations.Middlewares.ExceptionHandlingMiddleware">
+            <summary>
+            InternalException及び未対応の例外をハンドリングするミドルウェア
+            - 例外をキャッチし、ログにエラーメッセージとスタックトレースを出力する
+            - クライアントには統一的な JSON レスポンスを返し、内部情報を直接漏らさない
+            </summary>
+        </member>
+        <member name="M:LibraryApi.Presentations.Middlewares.ExceptionHandlingMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate,Microsoft.Extensions.Logging.ILogger{LibraryApi.Presentations.Middlewares.ExceptionHandlingMiddleware})">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="next">次のミドルウェアを実行するためのデリゲート</param>
+            <param name="logger">>ログ出力のためのILoggerインスタンス</param>
+        </member>
+        <member name="M:LibraryApi.Presentations.Middlewares.ExceptionHandlingMiddleware.InvokeAsync(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            ミドルウェア本体
+            - try/catch で次の処理をラップし、例外発生時にキャッチする
+            - InternalException とそれ以外の例外を区別して処理する
+            </summary>
+        </member>
+        <member name="T:LibraryApi.Presentations.ViewModels.RegisterBookViewModel">
+            <summary>
+            ユースケース:[新商品を登録する]を実現するViewModel
+            </summary>
+        </member>
+        <member name="T:LibraryApi.Presentations.ViewModels.RegisterUserViewModel">
+            <summary>
+            ユースケース:[ユーザーを登録する]を実現するViewModel
+            </summary>
+        </member>
+        <member name="P:LibraryApi.Presentations.ViewModels.RegisterUserViewModel.Username">
+            <summary>
+            ユーザー名（3〜30文字）
+            </summary>
+        </member>
+        <member name="P:LibraryApi.Presentations.ViewModels.RegisterUserViewModel.Email">
+            <summary>
+            メールアドレス（最大100文字）
+            </summary>
+        </member>
+        <member name="P:LibraryApi.Presentations.ViewModels.RegisterUserViewModel.Password">
+            <summary>
+            平文パスワード（8〜12文字）
+            </summary>
+        </member>
+        <member name="T:LibraryApi.Presentations.ViewModels.TokenResponse">
+            <summary>
+            JWTトークンをクライアントに返すためのレスポンスモデル
+            </summary>
+        </member>
+        <member name="P:LibraryApi.Presentations.ViewModels.TokenResponse.Token">
+            <summary>
+            JWTトークン文字列
+            </summary>
+        </member>
+        <member name="T:LibraryApi.Presentations.ViewModels.UpdateBookViewModel">
+            <summary>
+            ユースケース:[商品を変更する]を実現するViewModel
+            </summary>
+        </member>
+        <member name="T:LibraryApi.Presentation.Controllers.ViewBookController">
+            <summary>
+            ユースケース:[商品を表示する]を実現するコントローラ
+            </summary>
+        </member>
+        <member name="M:LibraryApi.Presentation.Controllers.ViewBookController.#ctor(LibraryApi.Applications.Usecases.Books.Interfaces.IViewBookUsecase)">
+            <summary>
+            コンストラクタ
+            </summary>
+            <param name="usecase">ユースケース:[商品を表示する]を実現するインターフェイス</param>
+            <param name="adapter">RegisterProductViewModelからドメインオブジェクト:Productへ変換するアダプタ</param>
+        </member>
+        <member name="M:LibraryApi.Presentation.Controllers.ViewBookController.ViewCategory">
+            <summary>
+            商品カテゴリ一覧の取得
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:LibraryApi.Presentation.ViewModels.LoginViewModel">
+            <summary>
+            ユースケース:[新商品を登録する]を実現するViewModel
+            </summary>
+        </member>
+        <member name="T:Program">
+            <summary>
+            Auto-generated public partial Program class for top-level statement apps.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type)">
+            <summary>
+            Generates a documentation comment ID for a type.
+            Example: T:Namespace.Outer+Inner`1 becomes T:Namespace.Outer.Inner`1
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.PropertyInfo)">
+            <summary>
+            Generates a documentation comment ID for a property.
+            Example: P:Namespace.ContainingType.PropertyName or for an indexer P:Namespace.ContainingType.Item(System.Int32)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type,System.String)">
+            <summary>
+            Generates a documentation comment ID for a property given its container type and property name.
+            Example: P:Namespace.ContainingType.PropertyName
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Reflection.MethodInfo)">
+            <summary>
+            Generates a documentation comment ID for a method (or constructor).
+            For example:
+              M:Namespace.ContainingType.MethodName(ParamType1,ParamType2)~ReturnType
+              M:Namespace.ContainingType.#ctor(ParamType)
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.GetTypeDocId(System.Type,System.Boolean,System.Boolean)">
+            <summary>
+            Generates a documentation ID string for a type.
+            This method handles nested types (replacing '+' with '.'),
+            generic types, arrays, pointers, by-ref types, and generic parameters.
+            The <paramref name="includeGenericArguments"/> flag controls whether
+            constructed generic type arguments are emitted, while <paramref name="omitGenericArity"/>
+            controls whether the generic arity marker (e.g. "`1") is appended.
+            </summary>
+        </member>
+        <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.NormalizeDocId(System.String)">
+            <summary>
+            Normalizes a documentation comment ID to match the compiler-style format.
+            Strips the return type suffix for ordinary methods but retains it for conversion operators.
+            </summary>
+            <param name="docId">The documentation comment ID to normalize.</param>
+            <returns>The normalized documentation comment ID.</returns>
+        </member>
+    </members>
+</doc>

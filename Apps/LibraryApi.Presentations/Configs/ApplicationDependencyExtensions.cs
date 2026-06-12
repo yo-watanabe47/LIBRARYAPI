@@ -1,19 +1,19 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using LibraryApi.Infrastructure.Contexts;
-using LibraryApi.Infrastructure.Adapters;
-using LibraryApi.Infrastructure.Repositories;
+using LibraryApi.Infrastructures.Contexts;
+using LibraryApi.Infrastructures.Adapters;
+using LibraryApi.Infrastructures.Repositories;
 using LibraryApi.Domains.Repositories;
 using LibraryApi.Applications.Usecases;
 using LibraryApi.Applications.Usecases.Books.Interfaces;
 using LibraryApi.Applications.Usecases.Books.Interactors;
-using LibraryApi.Infrastructure.Shared;
-// using LibraryApi.Applications.Security;
+using LibraryApi.Infrastructures.Shared;
+using LibraryApi.Applications.Security;
 using LibraryApi.Presentations.Adapters;
-// using LibraryApi.Infrastructure.Security;
+// using LibraryApi.Infrastructures.Security;
 using LibraryApi.Domains.Models;
-// using LibraryApi.Applications.Usecases.Users.Interfaces;
-// using LibraryApi.Applications.Usecases.Users.Interactors;
+using LibraryApi.Applications.Usecases.Users.Interfaces;
+using LibraryApi.Applications.Usecases.Users.Interactors;
 
 
 
@@ -43,17 +43,6 @@ this IServiceCollection services, IConfiguration config)
     return services;
 }
 
-    // /// <summary>
-    // /// インフラストラクチャ層の依存関係を追加
-    // /// </summary>
-    // /// <param name="services">依存関係注入(DI)のサービスコレクション</param>
-    // /// <param name="config">アプリケーションの設定情報を管理</param>
-    // /// <returns></returns>
-    // private static IServiceCollection AddInfrastructureDependencies(
-    //     this IServiceCollection services, IConfiguration config)
-    // {
-    //     return services;
-    // }
 
 /// <summary>
 /// インフラストラクチャ層の依存関係を追加
@@ -107,19 +96,20 @@ private static IServiceCollection AddInfrastructureDependencies(
     private static IServiceCollection AddApplicationLayerDependencies(
         this IServiceCollection services, IConfiguration config)
     {
-        // services.AddScoped<IRegisterBookUsecase, RegisterBookUsecase>();
-        // services.AddScoped<IUpdateBookUsecase, UpdateBookUsecase>();
+        services.AddScoped<IUpdateBookUsecase, UpdateBookUsecase>();
         services.AddScoped<ISearchBookByKeywordUsecase, SearchBookByKeywordUsecase>();
         services.AddScoped<IViewBookUsecase,ViewBookUsecase>();
         services.AddScoped<IDetailBookUsecase, DetailBookUsecase>();
+        services.AddScoped<IRegisterBookUsecase, RegisterBookUsecase>();
+        services.AddScoped<IDeleteBookUsecase, DeleteBookUsecase>();
         // // ASP.NET Core Identityのパスワードハッシュ化・検証機能
         services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
         // // PBKDF2アルゴリズムを利用したパスワードハッシュ化・検証機能
-        // services.AddScoped<IPasswordHashingService, PBKDF2PasswordHashingService>();
+        services.AddScoped<IPasswordHashingService, PBKDF2PasswordHashingService>();
         // ユースケース:[ユーザーを登録する]を実現するインターフェイス
-        // services.AddScoped<IRegisterUserUsecase, RegisterUserUsecase>();
+        services.AddScoped<IRegisterUserUsecase, RegisterUserUsecase>();
         //  // JwtSettingsをバインドしてDIに登録する
-        // services.Configure<JwtSettings>(config.GetSection("JwtSettings"));
+        services.Configure<JwtSettings>(config.GetSection("JwtSettings"));
         // // ユースケース:[ログインする]を実現するインターフェイス
         // services.AddScoped<IAuthenticateUserUsecase, AuthenticateUserUsecase>();
         return services;

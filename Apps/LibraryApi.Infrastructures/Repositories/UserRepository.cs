@@ -3,9 +3,9 @@ using LibraryApi.Domains.Models;
 using LibraryApi.Domains.Repositories;
 using LibraryApi.Domains.Exceptions;
 using LibraryApi.Applications.Exceptions;
-using LibraryApi.Infrastructure.Adapters;
-using LibraryApi.Infrastructure.Contexts;
-namespace LibraryApi.Infrastructure.Repositories;
+using LibraryApi.Infrastructures.Adapters;
+using LibraryApi.Infrastructures.Contexts;
+namespace LibraryApi.Infrastructures.Repositories;
 /// <summary>
 /// ドメインオブジェクト:User(ユーザー)のCRUD操作インターフェイスの実装
 /// </summary>
@@ -51,7 +51,7 @@ public class UserRepository : IUserRepository
     /// <param name="username">ユーザー名</param>
     /// <param name="email">メールアドレス</param>
     /// <returns>true:存在する false:存在しない</returns>
-    public async Task<bool> ExistsByUsernameOrEmailAsync(string username, string email)
+    public async Task<bool> ExistsByUsernameAsync(string username)
     {
         try
         {
@@ -62,19 +62,19 @@ public class UserRepository : IUserRepository
         {
             // 例外が発生した場合はInternalExceptionをスローする
             throw new InternalException(
-                $"ユーザー名とメールアドレス存在確認に失敗しました。 username={username} , email={email}", ex);
+                $"ユーザー名存在確認に失敗しました。 username={username}", ex);
         }
     }
 
     /// <summary>
-    /// ユーザー名またはパスワードからユーザーを取得する
+    /// ユーザー名からユーザーを取得する
     /// </summary>
-    /// <param name="usernameOrEmail">ユーザー名またはメールアドレス</param>
+    /// <param name="username">ユーザー名</param>
     /// <returns>存在する場合:ドメインオブジェクト:User 存在しない場合:null</returns>
-    public async Task<User?> SelectByUsernameOrEmailAsync(string usernameOrEmail)
+    public async Task<User?> SelectByUsernameAsync(string username)
     {
         var entity = await _context.Users
-        .FirstOrDefaultAsync(u => u.Username == usernameOrEmail);
+        .FirstOrDefaultAsync(u => u.Username == username);
         return entity != null ? await _adapter.RestoreAsync(entity) : null;
     }
 
@@ -102,31 +102,31 @@ public class UserRepository : IUserRepository
         }
     }
 
-    /// <summary>
-    /// 引数に指定されたユーザーIdでユーザーを削除する
-    /// </summary>
-    /// <param name="userId">ユーザーId(UUID)</param>
-    /// <returns>true:削除成功 false:削除対象が存在しない</returns>
-    public async Task<bool> DeleteByUserIdAsync(string userId)
-    {
-        try
-        {
-            // 削除対象のユーザーを取得する
-            var entity = await _context.Users.SingleOrDefaultAsync(u => u.UserUuid == userId);
-            if (entity is null)
-            {
-                return false; // 該当ユーザーが存在しない場合はfalseを返す
-            }
-            // ユーザーを削除する
-            _context.Users.Remove(entity);
-            // 削除結果をデータベースに反映させる
-            await _context.SaveChangesAsync();
-            return true;
-        }
-        catch(Exception ex){
-            // InternalExceptionにラップしてスローする
-            throw new InternalException(
-                $"Id:{userId}のユーザー削除中に予期しないエラーが発生しました。", ex);
-        }
-    }
+    // /// <summary>
+    // /// 引数に指定されたユーザーIdでユーザーを削除する
+    // /// </summary>
+    // /// <param name="userId">ユーザーId(UUID)</param>
+    // /// <returns>true:削除成功 false:削除対象が存在しない</returns>
+    // public async Task<bool> DeleteByUserIdAsync(string userId)
+    // {
+    //     try
+    //     {
+    //         // 削除対象のユーザーを取得する
+    //         var entity = await _context.Users.SingleOrDefaultAsync(u => u.UserUuid == userId);
+    //         if (entity is null)
+    //         {
+    //             return false; // 該当ユーザーが存在しない場合はfalseを返す
+    //         }
+    //         // ユーザーを削除する
+    //         _context.Users.Remove(entity);
+    //         // 削除結果をデータベースに反映させる
+    //         await _context.SaveChangesAsync();
+    //         return true;
+    //     }
+    //     catch(Exception ex){
+    //         // InternalExceptionにラップしてスローする
+    //         throw new InternalException(
+    //             $"Id:{userId}のユーザー削除中に予期しないエラーが発生しました。", ex);
+    //     }
+    // }
 }

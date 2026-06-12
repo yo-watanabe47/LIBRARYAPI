@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore.Storage;
 using LibraryApi.Applications.Usecases;
-using LibraryApi.Infrastructure.Contexts;
-namespace LibraryApi.Infrastructure.Shared;
+using LibraryApi.Infrastructures.Contexts;
+namespace LibraryApi.Infrastructures.Shared;
 /// <summary>
 /// Unit of Workパターンを利用したトランザクション制御インターフェイスの実装
 /// </summary>

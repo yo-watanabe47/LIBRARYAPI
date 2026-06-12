@@ -104,7 +104,7 @@ public class Book
     }
 
     /// <summary>
-    /// 価格の変更
+    /// 著者の変更
     /// </summary>
     public void ChangeAuthor(string author)
     {

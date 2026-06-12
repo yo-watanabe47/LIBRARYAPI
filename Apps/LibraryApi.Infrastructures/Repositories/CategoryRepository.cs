@@ -3,9 +3,9 @@ using LibraryApi.Domains.Models;
 using LibraryApi.Domains.Repositories;
 using LibraryApi.Applications.Exceptions;
 using LibraryApi.Domains.Exceptions;
-using LibraryApi.Infrastructure.Adapters;
-using LibraryApi.Infrastructure.Contexts;
-namespace LibraryApi.Infrastructure.Repositories;
+using LibraryApi.Infrastructures.Adapters;
+using LibraryApi.Infrastructures.Contexts;
+namespace LibraryApi.Infrastructures.Repositories;
 /// <summary>
 ///  ドメインオブジェクト:商品カテゴリのCRUD操作インターフェイスの実装
 /// </summary>

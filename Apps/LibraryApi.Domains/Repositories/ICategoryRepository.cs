@@ -11,10 +11,10 @@ public interface ICategoryRepository
     /// <returns>ProductCategoryのリスト</returns>
     Task<List<Category>> SelectAllAsync();
 
-    // /// <summary>
-    // /// 指定された商品カテゴリIdの商品カテゴリを取得する
-    // /// </summary>
-    // /// <param name="id">商品カテゴリId</param>
-    // /// <returns>ProductCategory または null</returns>
-    // Task<Category?> SelectByIdAsync(string id);
+    /// <summary>
+    /// 指定された商品カテゴリIdの商品カテゴリを取得する
+    /// </summary>
+    /// <param name="id">商品カテゴリId</param>
+    /// <returns>ProductCategory または null</returns>
+    Task<Category?> SelectByIdAsync(string id);
 }
