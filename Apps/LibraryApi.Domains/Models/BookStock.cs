@@ -9,8 +9,7 @@ public class BookStock
     public string StockUuid { get; private set; } = string.Empty;
     // 在庫数
     public int Stock { get; private set; }
-    public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
-    public DateTime UpdatedAt { get; private set; } = DateTime.UtcNow;
+
 
     /// <summary>
     /// 再構築・復元用コンストラクタ（UUIDを指定）

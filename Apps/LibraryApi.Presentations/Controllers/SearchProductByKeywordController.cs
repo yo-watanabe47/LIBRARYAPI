@@ -32,15 +32,23 @@ public class SearchBookByKeywordController : ControllerBase
 
     [HttpGet]
     // [ProducesResponseType]から[SwaggerResponse]に変更する
-    [SwaggerResponse(StatusCodes.Status200OK, "検索に成功した場合、商品リストを返す", typeof(List<BookSearchDto>))]
+    [SwaggerResponse(StatusCodes.Status200OK, "検索に成功した場合、商品リストを返す", typeof(List<BookDto>))]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "キーワード未入力など、リクエストが不正な場合")]
-    public async Task<IActionResult> Search([FromQuery] string keyword)
+    public async Task<IActionResult> Search([FromQuery] string? keyword)
     {
         // 未入力チェック
         if (string.IsNullOrWhiteSpace(keyword))
         {
             return BadRequest(
-            new { code = "INVALID_KEYWORD", message = "検索キーワードを入力してください。" });
+            new { code = "ValidationError", message = "キーワードは1~50文字で入力してください" });
+        }
+        if (keyword.Length > 50)
+        {
+            return BadRequest(new
+            {
+                error = "ValidationError",
+                message = "キーワードは1~50文字で入力してください。"
+            });
         }
         // 商品キーワード検索する
         var result = await _usecase.ExecuteAsync(keyword.Trim());

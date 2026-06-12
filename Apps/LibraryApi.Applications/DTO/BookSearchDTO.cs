@@ -2,17 +2,30 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace LibraryApi.Applications.Dtos;
 
 /// <summary>
-/// 商品キーワード検索結果を格納する DTO
+/// 画面の表示仕様（理想の形式）に完全に合わせた DTO
 /// </summary>
-public class BookSearchDto
+public class BookDto
 {
-    public string BookUuid { get; set; } = string.Empty;
+    // bookUuid から bookId に名称を変更
+    public string BookId { get; set; } = string.Empty;
     public string Title { get; set; } = string.Empty;
     public string Author { get; set; } = string.Empty;
-    public string CategoryName { get; set; } = string.Empty; 
-    public int Stock { get; set; } 
+    
+    // ★文字列ではなく、オブジェクト階層にする
+    public BookCategoryDto? Category { get; set; }
+
+    public int Stock { get; set; }
+}
+
+/// <summary>
+/// カテゴリ情報用のネストされた DTO
+/// </summary>
+public class BookCategoryDto
+{
+    // categoryUuid から categoryId に名称を変更し、不要な日時は含めない
+    public string CategoryId { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
 }

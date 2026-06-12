@@ -9,10 +9,6 @@ public class Book
     public string BookUuid { get; private set; } = string.Empty;
     public string Title { get; private set; } = string.Empty;
     public string Author { get; private set; } = string.Empty;
-    public int CategoryId { get; private set; }
-    public int StockId { get; private set; }
-    public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
-    public DateTime UpdatedAt { get; private set; } = DateTime.UtcNow;
     public Category? Category { get; private set; }
     public BookStock? Stock { get; private set; }
 

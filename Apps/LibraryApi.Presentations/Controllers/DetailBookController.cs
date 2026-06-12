@@ -3,6 +3,7 @@ using Swashbuckle.AspNetCore.Annotations;
 using LibraryApi.Domains.Models;
 using LibraryApi.Applications.Usecases.Books.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using LibraryApi.Applications.Dtos;
 namespace LibraryApi.Presentations.Controllers;
 /// <summary>
 /// ユースケース:[商品をキーワード検索する]を実現するコントローラ
@@ -31,7 +32,7 @@ public class DetailBookController : ControllerBase
 
     [HttpGet]
     // [ProducesResponseType]から[SwaggerResponse]に変更する
-    [SwaggerResponse(StatusCodes.Status200OK, "検索に成功した場合、商品リストを返す", typeof(List<Book>))]
+    [SwaggerResponse(StatusCodes.Status200OK, "検索に成功した場合、商品リストを返す", typeof(List<BookDto>))]
     [SwaggerResponse(StatusCodes.Status400BadRequest, "キーワード未入力など、リクエストが不正な場合")]
     public async Task<IActionResult> Search([FromQuery] string keyword)
     {

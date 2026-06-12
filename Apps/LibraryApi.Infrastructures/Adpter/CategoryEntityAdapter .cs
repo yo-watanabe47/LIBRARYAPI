@@ -1,6 +1,6 @@
 using LibraryApi.Domains.Adapters;
 using LibraryApi.Domains.Models;
-using LibraryApi.Domains.Exceptions;
+using LibraryApi.Applications.Exceptions;
 using LibraryApi.Infrastructure.Entities;
 namespace LibraryApi.Infrastructure.Adapters;
 /// <summary>

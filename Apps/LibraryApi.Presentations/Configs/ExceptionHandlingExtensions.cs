@@ -1,6 +1,6 @@
-using LibraryApi.Presentation.Middlewares;
+using LibraryApi.Presentations.Middlewares;
 
-namespace LibraryApi.Presentation.Configs;
+namespace LibraryApi.Presentations.Configs;
 /// <summary>
 /// ExceptionHandlingMiddlewareを登録する拡張メソッドクラス
 /// </summary>

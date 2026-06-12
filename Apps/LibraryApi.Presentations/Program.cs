@@ -26,7 +26,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 // // 例外ハンドリングを登録する
-// app.UseExceptionHandling();
+app.UseExceptionHandling();
 // HTTPリクエストをHTTPSへ自動リダイレクトするKestrelミドルウェアを有効化
 app.UseHttpsRedirection();
 // HSTSを有効化

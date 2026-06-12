@@ -1,5 +1,5 @@
-using LibraryApi.Applications.Dtos;
 using LibraryApi.Domains.Models;
+using LibraryApi.Applications.Dtos;
 namespace LibraryApi.Applications.Usecases.Books.Interfaces;
 /// <summary>
 /// ユースケース:[商品をキーワード検索する]を実現するインターフェイス
@@ -11,6 +11,6 @@ public interface ISearchBookByKeywordUsecase
     /// </summary>
     /// <param name="keyword">商品キーワード</param>
     /// <returns>キーワード検索結果</returns>
-    Task<List<BookSearchDto>> ExecuteAsync(string keyword);
+    Task<List<BookDto>> ExecuteAsync(string keyword);
 
 }

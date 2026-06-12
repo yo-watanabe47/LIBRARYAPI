@@ -1,3 +1,4 @@
+using LibraryApi.Applications.Dtos;
 using LibraryApi.Domains.Models;
 namespace LibraryApi.Applications.Usecases.Books.Interfaces;
 /// <summary>
@@ -10,6 +11,6 @@ public interface IDetailBookUsecase
     /// </summary>
     /// <param name="keyword">商品キーワード</param>
     /// <returns>キーワード検索結果</returns>
-    Task<List<Book>> ExecuteDetailAsync(string keyword);
+    Task<List<BookDto>> ExecuteDetailAsync(string keyword);
 
 }

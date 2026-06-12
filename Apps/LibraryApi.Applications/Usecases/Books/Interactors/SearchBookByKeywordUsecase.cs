@@ -25,22 +25,21 @@ public class SearchBookByKeywordUsecase : ISearchBookByKeywordUsecase
     /// <param name="keyword">商品キーワード</param>
     /// <returns>キーワード検索結果</returns>
     /// <exception cref="NotFoundException">該当データが存在しない場合にスローされる</exception>
-    public async Task<List<BookSearchDto>> ExecuteAsync(string keyword)
+    public async Task<List<BookDto>> ExecuteAsync(string keyword)
     {
         var result = await _repository
             .SelectByTitleLikeWithBookStockAndCategoryAsync(keyword);
-
-       var dtoResult = result.Select(b => new BookSearchDto
+        return result.Select(b => new BookDto
         {
-            BookUuid = b.BookUuid,
+            BookId = b.BookUuid,
             Title = b.Title,
             Author = b.Author,
-            // ヌルガード（CategoryやBookStockがNullでも落ちないようにする）
-            CategoryName = b.Category?.Name ?? "未分類",
+            Category = b.Category != null ? new BookCategoryDto
+            {
+                CategoryId = b.Category.CategoryUuid,
+                Name = b.Category.Name
+            } : null,
             Stock = b.Stock?.Stock ?? 0
-        }).ToList(); // 最後にListに変換
-
-        // 3. 詰め替えたDTOのリストを返す
-        return dtoResult;
+        }).ToList();
     }
 }

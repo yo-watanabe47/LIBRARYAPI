@@ -9,8 +9,7 @@ public class Category
     public string CategoryUuid { get; private set; } = string.Empty;
     // 商品カテゴリ名
     public string Name { get; private set; } = string.Empty;
-    public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
-    public DateTime UpdatedAt { get; private set; } = DateTime.UtcNow;
+
 
     /// <summary>
     /// コンストラクタ

@@ -1,6 +1,6 @@
 using LibraryApi.Applications.Exceptions;
 
-namespace LibraryApi.Presentation.Middlewares;
+namespace LibraryApi.Presentations.Middlewares;
 /// <summary>
 /// InternalException及び未対応の例外をハンドリングするミドルウェア
 /// - 例外をキャッチし、ログにエラーメッセージとスタックトレースを出力する

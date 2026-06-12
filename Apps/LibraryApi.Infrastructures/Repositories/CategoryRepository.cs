@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using LibraryApi.Domains.Models;
 using LibraryApi.Domains.Repositories;
+using LibraryApi.Applications.Exceptions;
 using LibraryApi.Domains.Exceptions;
 using LibraryApi.Infrastructure.Adapters;
 using LibraryApi.Infrastructure.Contexts;
