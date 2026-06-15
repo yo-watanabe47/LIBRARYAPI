@@ -33,7 +33,7 @@ public class RegisterUserController : ControllerBase
         _adapter = adapter;
     }
 
-    // [Authorize]
+    [Authorize]
     [HttpGet("check")]
     [SwaggerOperation(Summary = "ユーザー名",
                       Description = "ユーザー名")]
@@ -66,7 +66,7 @@ public class RegisterUserController : ControllerBase
     /// </summary>
     /// <param name="viewModel">ユースケース:[ユーザーを登録する]を実現するViewModel</param>
     /// <returns></returns>
-    // [Authorize]
+    [Authorize]
     [HttpPost]
     [SwaggerOperation(Summary = "ユーザーを登録",
                       Description = "ユーザー情報を受け取り、ユーザーを登録する")]

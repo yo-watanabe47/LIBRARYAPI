@@ -36,7 +36,7 @@ public class UpdateBookController : ControllerBase
     /// </summary>
     /// <param name="bookId">書籍Id(UUID)</param>
     /// <returns>該当する書籍が存在すればOK(200)、存在しなければNotFound(404)</returns>
-    // [Authorize]
+    [Authorize]
     [HttpGet("book/{bookId}")]
     [SwaggerOperation(
         Summary = "書籍の取得",
@@ -67,7 +67,7 @@ public class UpdateBookController : ControllerBase
     /// 存在しない場合:Ok(200)、存在する場合:Conflict(409) 
     /// </returns>
     
-    // [Authorize]
+    [Authorize]
     [HttpGet("validate")]
     [SwaggerOperation(
         Summary = "書籍名の存在確認",
@@ -103,7 +103,7 @@ public class UpdateBookController : ControllerBase
     /// </summary>
     /// <param name="model">書籍変更用ViewModel</param>
     /// <returns></returns>
-    // [Authorize]
+    [Authorize]
     [HttpPut]
     [SwaggerOperation(
         Summary = "書籍変更",

@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 ApplicationDependencyExtensions
     .AddApplicationDependencies(builder.Services, builder.Configuration);
 // // JWT認証ミドルウェアをサービス登録する
-// builder.Services.AddJwtAuthentication(builder.Configuration);
+builder.Services.AddJwtAuthentication(builder.Configuration);
 // Swagger(Open API)のサービス登録する
 builder.Services.AddSwaggerWithJwt();
 // WebApplicationを生成する

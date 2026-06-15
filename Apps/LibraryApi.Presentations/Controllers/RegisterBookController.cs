@@ -36,7 +36,7 @@ public class RegisterBookController : ControllerBase
     /// 商品カテゴリ一覧の取得
     /// </summary>
     /// <returns></returns>
-    // [Authorize]
+    [Authorize]
     [HttpGet("categories")]
     [SwaggerOperation(Summary = "カテゴリ一覧を取得", 
                       Description = "登録可能なすべてのカテゴリを返します。")]
@@ -52,7 +52,7 @@ public class RegisterBookController : ControllerBase
     /// </summary>
     /// <param name="categoryId">商品カテゴリId(UUID)</param>
     /// <returns>該当するカテゴリが存在すればOK(200)、存在しなければNotFound(404)</returns>
-    // [Authorize]
+    [Authorize]
     [HttpGet("categories/{categoryId}")]
     [SwaggerOperation(Summary = "カテゴリの取得", 
                       Description = "指定されたカテゴリIdに一致するカテゴリを返します。")]
@@ -82,7 +82,7 @@ public class RegisterBookController : ControllerBase
     /// <returns>
     /// 存在しない場合:Ok(200)、存在する場合:Conflict(409) 
     /// </returns>
-    // [Authorize]
+    [Authorize]
     [HttpGet("validate")]
     [SwaggerOperation(Summary = "書籍名の存在確認", 
                       Description = "書籍名が既に存在するかを検証する")]
@@ -116,7 +116,7 @@ public class RegisterBookController : ControllerBase
     /// </summary>
     /// <param name="model">商品登録用ViewModel</param>
     /// <returns></returns>
-    // [Authorize]
+    [Authorize]
     [HttpPost]
     [SwaggerOperation(Summary = "新書籍を登録", 
                       Description = "書籍情報を受け取り、書籍を登録する")]

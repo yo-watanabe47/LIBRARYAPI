@@ -29,7 +29,7 @@ public class DetailBookController : ControllerBase
     /// </summary>
     /// <param name="keyword">検索キーワード</param>
     /// <returns>検索結果の商品一覧</returns>
-
+    [Authorize]
     [HttpGet]
     // [ProducesResponseType]から[SwaggerResponse]に変更する
     [SwaggerResponse(StatusCodes.Status200OK, "検索に成功した場合、商品リストを返す", typeof(List<BookDto>))]

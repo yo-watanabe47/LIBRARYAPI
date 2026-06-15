@@ -10,10 +10,12 @@ using LibraryApi.Applications.Usecases.Books.Interactors;
 using LibraryApi.Infrastructures.Shared;
 using LibraryApi.Applications.Security;
 using LibraryApi.Presentations.Adapters;
-// using LibraryApi.Infrastructures.Security;
+using LibraryApi.Infrastructure.Security;
 using LibraryApi.Domains.Models;
 using LibraryApi.Applications.Usecases.Users.Interfaces;
 using LibraryApi.Applications.Usecases.Users.Interactors;
+using LibraryApi.Applications.Usecases.Authenticate.Interfaces;
+using LibraryApi.Applications.Usecases.Authenticate.Interactors;
 
 
 
@@ -82,7 +84,7 @@ private static IServiceCollection AddInfrastructureDependencies(
     // Unit of Workパターンを利用したトランザクション制御インターフェイス
     services.AddScoped<IUnitOfWork, UnitOfWork>();
     // // JWTの発行・検証インターフェイスの実装
-    // services.AddSingleton<IJwtTokenProvider, JwtTokenProvider>();
+    services.AddSingleton<IJwtTokenProvider, JwtTokenProvider>();
     return services;
 }
 
@@ -111,7 +113,7 @@ private static IServiceCollection AddInfrastructureDependencies(
         //  // JwtSettingsをバインドしてDIに登録する
         services.Configure<JwtSettings>(config.GetSection("JwtSettings"));
         // // ユースケース:[ログインする]を実現するインターフェイス
-        // services.AddScoped<IAuthenticateUserUsecase, AuthenticateUserUsecase>();
+        services.AddScoped<IAuthenticateUserUsecase, AuthenticateUserUsecase>();
         return services;
     }
 

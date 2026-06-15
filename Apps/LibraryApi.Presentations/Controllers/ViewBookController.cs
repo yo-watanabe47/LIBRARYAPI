@@ -2,11 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using LibraryApi.Domains.Models;
 using LibraryApi.Applications.Exceptions;
 using LibraryApi.Applications.Usecases.Books.Interfaces;
-using LibraryApi.Presentation.ViewModels;
+using LibraryApi.Presentations.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 
 using Swashbuckle.AspNetCore.Annotations;
-namespace LibraryApi.Presentation.Controllers;
+namespace LibraryApi.Presentations.Controllers;
 /// <summary>
 /// ユースケース:[商品を表示する]を実現するコントローラ
 /// </summary>
@@ -21,7 +21,6 @@ public class ViewBookController : ControllerBase
     /// コンストラクタ
     /// </summary>
     /// <param name="usecase">ユースケース:[商品を表示する]を実現するインターフェイス</param>
-    /// <param name="adapter">RegisterProductViewModelからドメインオブジェクト:Productへ変換するアダプタ</param>
     public ViewBookController(
         IViewBookUsecase usecase)
     {
@@ -32,6 +31,7 @@ public class ViewBookController : ControllerBase
     /// 商品カテゴリ一覧の取得
     /// </summary>
     /// <returns></returns>
+    [Authorize]
     [HttpGet("categories")]
     [SwaggerOperation(Summary = "商品カテゴリ一覧を取得", 
                       Description = "登録可能なすべての商品カテゴリを返します。")]

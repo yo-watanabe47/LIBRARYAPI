@@ -32,7 +32,7 @@ public class DeleteBookController : ControllerBase
     /// </summary>
     /// <param name="bookId">書籍Id(UUID)</param>
     /// <returns>該当する書籍が存在すればOK(200)、存在しなければNotFound(404)</returns>
-    // [Authorize]
+    [Authorize]
     [HttpGet("book/{bookId}")]
     [SwaggerOperation(
         Summary = "書籍の取得",
@@ -61,7 +61,7 @@ public class DeleteBookController : ControllerBase
     /// </summary>
     /// <param name="bookId">書籍削除用ViewModel</param>
     /// <returns></returns>
-    // [Authorize]
+    [Authorize]
     [HttpDelete]
     [SwaggerOperation(
         Summary = "書籍削除",

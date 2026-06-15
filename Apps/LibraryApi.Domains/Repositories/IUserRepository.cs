@@ -33,7 +33,7 @@ public interface IUserRepository
     // /// </summary>
     // /// <param name="usernameOrEmail">ユーザー名またはメールアドレス</param>
     // /// <returns>存在する場合:ドメインオブジェクト:User 存在しない場合:null</returns>
-    Task<User?> SelectByUsernameAsync(string usernameOrEmail);
+    Task<User?> SelectByUsernameAsync(string username);
 
     // /// <summary>
     // /// 引数に指定されたユーザーIdでユーザーを削除する
